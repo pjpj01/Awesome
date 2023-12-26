@@ -1,12 +1,22 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import React from 'react';
+import { StyleSheet, View, Text } from 'react-native';
+import { NavigationContainer } from '@react-navigation/native';
+import { createStackNavigator } from '@react-navigation/stack';
+import HomeButton from './components/HomeButton'; // Assuming your component filenames follow the convention of starting with an uppercase letter
+import PillScreen from './components/PillScreen';
+import InfoScreen from './components/InfoScreen';
 
 export default function App() {
+  const Stack = createStackNavigator();
+
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+    <NavigationContainer>
+      <Stack.Navigator initialRouteName="Home">
+        <Stack.Screen name="Home" component={HomeButton} />
+        <Stack.Screen name="PillScreen" component={PillScreen} />
+        <Stack.Screen name="InfoScreen" component={InfoScreen} />
+      </Stack.Navigator>
+    </NavigationContainer>
   );
 }
 
